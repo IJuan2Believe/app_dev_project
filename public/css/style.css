@@ -1,0 +1,27 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #C3B1E1; 
+    margin : 0 ; 
+}
+ 
+.footer_part1{
+    background-color: #C1E1C1;
+}
+
+.footer_part2{
+    background-color: #91CA91;
+}
+main {
+    flex: 1;
+}
+
+.store_logo{
+    height: 5.5rem;
+    width: auto;
+}
+
+.purple_btn{
+  background-color: #8C68C4;
+}
