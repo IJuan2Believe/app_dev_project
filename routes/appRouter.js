@@ -1,26 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const { isAdmin } = require('../middleware/app-middleware.js');
+const controller = require('../controllers/app-controller.js');
 
-router.get("/", ( req, res) => {
-    res.render(`home`);
-});
+router.get('/', controller.getHome);
+router.get('/RetroGames', controller.getRetroGames);
+router.get('/Cart', controller.getCart);
+router.get('/Collectibles', controller.getCollectibles);
 
-router.get("/RetroGames", ( req, res) => {
-    res.render(`retro-games`);
-});
 
-router.get("/Cart", ( req, res) => {
-    res.render(`cart`);
-});
 
-router.get("/Collectibles", ( req, res) => {
-    res.render(`collectibles`);
-});
-
- router.get("/Inventory", ( req, res) => {
-    res.render(`inventory`);
-});
-
- 
+router.get('/Inventory', isAdmin, controller.getInventory);
+router.get('/profile', controller.getProfile);
 
 module.exports = router;
+ 

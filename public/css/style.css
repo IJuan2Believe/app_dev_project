@@ -25,3 +25,23 @@ main {
 .purple_btn{
   background-color: #8C68C4;
 }
+ 
+ 
+ 
+
+.img-size {
+  max-height: 30vh;     
+  max-width: 30vh;
+  height: auto;
+  border-radius: 4px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;         
+  gap: 0.5%;                   
+  padding: 16px;
+  background-color: #A78CD3;
+}
+ 
