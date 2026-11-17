@@ -94,17 +94,17 @@ function addUser(username, email, password, public_service) {
     return newUser;
 }
 
-// function addToCart(userId, itemId, type) {
-//     const user = getUserInfo(userId);
-//     const list = type === 'retro-game' ? retroGames : collectibles;
-//     const item = list.find(i => i.id === Number(itemId));
+function addToCart(userId, itemId, type) {
+    const user = getUserInfo(userId);
+    const list = type === 'retro-game' ? retroGames : collectibles;
+    const item = list.find(i => i.id === Number(itemId));
 
-//     if (!user || !item) {
-//         throw new Error('User or item not found');
-//     }
+    if (!user || !item) {
+        throw new Error('User or item not found');
+    }
 
-//     user.cart.push(item.name);
-// }
+    user.cart.push(item.name);
+}
 
 
-module.exports = { getAllCollectibles, getAllRetroGames , getUserInfo , addUser  };
+module.exports = { getAllCollectibles, getAllRetroGames , getUserInfo , addUser , addToCart };

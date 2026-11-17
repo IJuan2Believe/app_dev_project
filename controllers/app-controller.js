@@ -44,10 +44,10 @@ function getInventory(req, res) {
     res.render('inventory', { items });
 }
 
-// function postAddToCart(req, res) {
-//     const { item_id, type } = req.body;
-//     services.addToCart(1, item_id, type);
-// }
+function postAddToCart(req, res) {
+    const { item_id, type } = req.body;
+    services.addToCart(1, item_id, type);
+}
 
 module.exports = {
     getHome,
@@ -57,5 +57,5 @@ module.exports = {
     getInventory,
     getProfile, 
     postRegister,
-   
+    postAddToCart
 };

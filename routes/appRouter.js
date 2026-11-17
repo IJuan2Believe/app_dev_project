@@ -8,7 +8,7 @@ router.get('/RetroGames', controller.getRetroGames);
 router.get('/Cart', controller.getCart);
 
 router.get('/Collectibles', controller.getCollectibles);
- 
+router.post('/cart', controller.postAddToCart);
 
 router.get('/Inventory', isAdmin, controller.getInventory);
 
