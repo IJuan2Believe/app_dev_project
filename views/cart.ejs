@@ -19,7 +19,21 @@
 <h1>Cart</h1>
  
 
+
+
+  <div class="container my-4">
+ 
+  <% if (!user_info.cart || user_info.cart.length === 0) { %>
+        <p>Your cart is empty.</p>
+    <% } else { %>
+        <ul>
+            <% user_info.cart.forEach(function(item) { %>
+                <li><%= item %></li>
+            <% }); %>
+        </ul>
+    <% } %>
 </main>
+
 
 <%- include('partials/footer') %>
 

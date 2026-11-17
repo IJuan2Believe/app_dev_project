@@ -6,12 +6,15 @@ const controller = require('../controllers/app-controller.js');
 router.get('/', controller.getHome);
 router.get('/RetroGames', controller.getRetroGames);
 router.get('/Cart', controller.getCart);
+
 router.get('/Collectibles', controller.getCollectibles);
-
-
+ 
 
 router.get('/Inventory', isAdmin, controller.getInventory);
+
+
 router.get('/profile', controller.getProfile);
+router.post('/profile', controller.postRegister);
 
 module.exports = router;
  

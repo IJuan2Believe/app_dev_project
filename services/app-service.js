@@ -6,6 +6,7 @@ class Item {
         this.price = price ; 
         this.stock = stock ; 
         this.image = image ; 
+        
     }
 }
  
@@ -13,21 +14,23 @@ class Item {
  
 
 class User {
-    constructor(user_id, username, email, password, is_manager = false, public_service = false) {
+    constructor(user_id, username, email, password, is_manager = false, public_service = false , cart = [] ) {
         this.user_id = user_id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.is_manager = is_manager;
         this.public_service = public_service;
+        this.cart = cart; 
     }
 }
-
+ 
 
 class Collectible extends Item {
     constructor ( id , name , price , stock , category , image     ) {
         super(id , name , price , stock , image   ) ; 
         this.category = category ; 
+ 
     }
 }
 
@@ -59,12 +62,14 @@ const retroGames = [
     new retroGame(4, 'Super Smash Bros. Melee', 40, 3, 'Nintendo Gamecube' , `images/ssbm.jpg`),
     new retroGame(5, 'Halo 3', 20, 3, 'Xbox 360' , `images/halo3.png`)
 ];
-
+ 
 const users = [
-    new User( 1 , `jchi` , `jchi@email.com` , `really_complex_password` , true , false ),
-    new User( 2 , `user_guy ` , `user@gmail.com` , `birthday_date_password` , false  , true )
+    new User( 1 , `jchi` , `jchi@email.com` , `really_complex_password` , true , false  , [  ]),
+    new User( 2 , `John Doe` , `user@gmail.com` , `birthday_date_password` , false  , true , [] )
 ]; 
 
+
+ 
 function getAllCollectibles() {
     return collectibles;
 }
@@ -77,5 +82,29 @@ function getAllRetroGames() {
 function getUserInfo(id) {
     return users.find(user => user.user_id === id);
 }
+ 
 
-module.exports = { getAllCollectibles, getAllRetroGames , getUserInfo };
+function addUser(username, email, password, public_service) {
+    if (users.some(u => u.username === username)) {
+        throw new Error('Username already taken');   //error handling 
+    }
+    const newUser = new User(users.length + 1, username, email, password, false, public_service);
+    users.push(newUser);
+    console.log(newUser); // just for me to check that the user was created 
+    return newUser;
+}
+
+// function addToCart(userId, itemId, type) {
+//     const user = getUserInfo(userId);
+//     const list = type === 'retro-game' ? retroGames : collectibles;
+//     const item = list.find(i => i.id === Number(itemId));
+
+//     if (!user || !item) {
+//         throw new Error('User or item not found');
+//     }
+
+//     user.cart.push(item.name);
+// }
+
+
+module.exports = { getAllCollectibles, getAllRetroGames , getUserInfo , addUser  };
